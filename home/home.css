@@ -1,0 +1,13 @@
+main {
+  background-image: url("/images/hero.jpg");
+  /* background-color: red; */
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+}
+#banner-box {
+  height: 600px;
+  width: 40%;
+  background-color: #14a902;
+  padding: 10px;
+}
