@@ -39,7 +39,7 @@
               placeholder="Password"
             />
           </div>
-          No account <a href="/signup/signup.html">register instead</a>
+          No account <a href="/signup/signup.php">register instead</a>
           <div>
             <button type="" class="btn btn-success">log in</button>
           </div>

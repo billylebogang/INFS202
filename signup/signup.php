@@ -1,3 +1,51 @@
+<?php
+
+
+  include('../configs/dbCon.php');
+
+
+  if (isset($_POST['submit_button'])){
+
+    echo "Submitted";
+    $errors = true;
+
+    $name =  $_POST['center_name'];
+    $location = $_POST['location'];
+    $contact = $_POST['contact'];
+    $password =  $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $email = $_POST['email'];
+
+
+    if($errors){
+
+      $query = "INSERT INTO centers (center_name, location, contact, postmail, email) VALUES ('$name', '$location
+      ', '@contact', NULL, '$email')";
+
+     //save to database
+     if(mysqli_query($conn, $query)){
+
+      header('Location: ../login/login.php');
+     }else{
+
+      echo "Error mysqli_insert" . mysqli_error($conn);
+     }
+
+
+
+    }
+    else{
+
+    }
+
+  }
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,13 +71,15 @@
     <main class="container">
       <div>
         <h3 class="display-5">Register center</h3>
-        <form action="" method="post">
+        <form action="/signup/signup.php" method="POST">
           <div class="mb-3">
             <input
+              name="center_name"
               type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Center name"
+              required
             />
           </div>
           <div class="mb-3">
@@ -38,18 +88,23 @@
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Location"
+              name="location"
+              required
             />
           </div>
           <div class="mb-3">
             <input
-              type="number"
+              name="contact"
+              type="text"
               class="form-control"
               id="password_input"
               placeholder="Contacts"
+              required
             />
           </div>
           <div class="mb-3">
             <input
+              name="email"
               type="email"
               class="form-control"
               id="exampleFormControlInput1"
@@ -58,23 +113,27 @@
           </div>
           <div class="mb-3">
             <input
+              name="password"
               type="password"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Password"
+              required
             />
           </div>
           <div class="mb-3">
             <input
+              name="confirm_password"
               type="password"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Confirm password"
+              required
             />
           </div>
-          Have an account <a href="/login/login.html">login instead</a>
+          Have an account <a href="/login/login.php">login instead</a>
           <div>
-            <button type="" class="btn btn-success">Register</button>
+            <button name="submit_button" type="submit" class="btn btn-success">Register</button>
           </div>
         </form>
       </div>
